@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-commerce website</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="header">
         <div class="container">
             <div class="navbar">
                 <div class="logo">
+                    <a href="index.php"></a>
                     <img src="images/logo.png" alt="" width="125px">
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Products</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="products.php">Products</a></li>
                         <li><a href="">About us</a></li>
                         <li><a href="">Contacts</a></li>
-                        <li><a href="">Accounts</a></li>
+                        <li><a href="account.php">Accounts</a></li>
                     </ul>
                 </nav>
-                <img src="images/cart.png" alt="" width="30px" height="25px">
+                <a href="cart.php">
+                    <img src="images/cart.png" alt="" width="30px" height="25px">
+                </a>
                 <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
             </div>
             <div class="row">
@@ -61,8 +67,12 @@
         <h2 class="title">Featured Products</h2>
         <div class="row">
             <div class="col-4">
-                <img src="images/pro1.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
+                <a href="product-detail.php">
+                    <img src="images/pro1.jpg" alt="">
+                </a>
+                <a href="product-detail.php">
+                    <h4>Hoodie SweatShirt by Yame</h4>
+                </a>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -272,7 +282,8 @@
                     <p>Exclusively Available on Thegioididong</p>
                     <h1>Apple watch series S6 LITE</h1>
                     <small>
-                        Apple Watch Series 6. The future of health is on your wrist. Measure your blood oxygen level with a revolutionary new sensor and app. Take an ECG anytime, ...
+                        Apple Watch Series 6. The future of health is on your wrist. Measure your blood oxygen level
+                        with a revolutionary new sensor and app. Take an ECG anytime, ...
                     </small>
                     <a href="" class="btn">Buy Now &#8594;</a>
                 </div>
@@ -285,7 +296,9 @@
             <div class="row">
                 <div class="col-3">
                     <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit nam error temporibus quo harum unde eos fugit quia mollitia perferendis vitae quas fugiat, ut nihil quasi ullam molestias eligendi?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit nam error temporibus quo
+                        harum unde eos fugit quia mollitia perferendis vitae quas fugiat, ut nihil quasi ullam molestias
+                        eligendi?</p>
                     <div class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -298,7 +311,9 @@
                 </div>
                 <div class="col-3">
                     <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit nam error temporibus quo harum unde eos fugit quia mollitia perferendis vitae quas fugiat, ut nihil quasi ullam molestias eligendi?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit nam error temporibus quo
+                        harum unde eos fugit quia mollitia perferendis vitae quas fugiat, ut nihil quasi ullam molestias
+                        eligendi?</p>
                     <div class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -311,7 +326,9 @@
                 </div>
                 <div class="col-3">
                     <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit nam error temporibus quo harum unde eos fugit quia mollitia perferendis vitae quas fugiat, ut nihil quasi ullam molestias eligendi?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum odit nam error temporibus quo
+                        harum unde eos fugit quia mollitia perferendis vitae quas fugiat, ut nihil quasi ullam molestias
+                        eligendi?</p>
                     <div class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -391,15 +408,16 @@
     <script>
         var MenuItems = document.getElementById("MenuItems");
         MenuItems.style.maxHeight = "0px";
-        function menutoggle(){
-            if(MenuItems.style.maxHeight == "0px"){
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
                 MenuItems.style.maxHeight = "200px";
             }
-            else{
+            else {
                 MenuItems.style.maxHeight = "0px";
             }
         }
     </script>
 
 </body>
+
 </html>

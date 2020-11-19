@@ -15,18 +15,21 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
+                <a href="index.php"></a>
                 <img src="images/logo.png" alt="" width="125px">
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Products</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="products.php">Products</a></li>
                     <li><a href="">About us</a></li>
                     <li><a href="">Contacts</a></li>
-                    <li><a href="">Accounts</a></li>
+                    <li><a href="account.php">Accounts</a></li>
                 </ul>
             </nav>
-            <img src="images/cart.png" alt="" width="30px" height="25px">
+            <a href="cart.php">
+                <img src="images/cart.png" alt="" width="30px" height="25px">
+            </a>
             <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
@@ -44,14 +47,14 @@
                         <img src="images/buy-1.jpg" alt="">
                         <div>
                             <p>Hoodie Simple by Yame</p>
-                            <small>$ 345</small>
+                            <small>$345</small>
                             <br>
                             <a href="">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" value="1"></td>
-                <td></td>
+                <td>$345</td>
             </tr>
             <tr>
                 <td>
@@ -59,14 +62,14 @@
                         <img src="images/buy-2.jpg" alt="">
                         <div>
                             <p>Hoodie Simple by Yame</p>
-                            <small>$ 345</small>
+                            <small>$345</small>
                             <br>
                             <a href="">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" value="1"></td>
-                <td></td>
+                <td>$566</td>
             </tr>
             <tr>
                 <td>
@@ -74,14 +77,14 @@
                         <img src="images/buy-2.jpg" alt="">
                         <div>
                             <p>Hoodie Simple by Yame</p>
-                            <small>$ 345</small>
+                            <small>$345</small>
                             <br>
                             <a href="">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" value="1"></td>
-                <td></td>
+                <td>$565</td>
             </tr>
             <tr>
                 <td>
@@ -89,14 +92,14 @@
                         <img src="images/buy-2.jpg" alt="">
                         <div>
                             <p>Hoodie Simple by Yame</p>
-                            <small>$ 345</small>
+                            <small>$345</small>
                             <br>
                             <a href="">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" value="1"></td>
-                <td></td>
+                <td>$558</td>
             </tr>
             <tr>
                 <td>
@@ -104,16 +107,33 @@
                         <img src="images/buy-2.jpg" alt="">
                         <div>
                             <p>Hoodie Simple by Yame</p>
-                            <small>$ 345</small>
+                            <small>$345</small>
                             <br>
                             <a href="">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" value="1"></td>
-                <td></td>
+                <td>$678</td>
             </tr>
         </table>
+
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Sub Total</td>
+                    <td>$5657</td>
+                </tr>
+                <tr>
+                    <td>Pee</td>
+                    <td>$342</td>
+                </tr>
+                <tr>
+                    <td>Grand Total</td>
+                    <td>$5903</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div class="footer">

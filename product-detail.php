@@ -14,21 +14,24 @@
 <body>
     <div class="container">
         <div class="navbar">
-            <div class="logo">
-                <img src="images/logo.png" alt="" width="125px">
-            </div>
-            <nav>
-                <ul id="MenuItems">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Products</a></li>
-                    <li><a href="">About us</a></li>
-                    <li><a href="">Contacts</a></li>
-                    <li><a href="">Accounts</a></li>
-                </ul>
-            </nav>
-            <img src="images/cart.png" alt="" width="30px" height="25px">
-            <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
-        </div>
+             <div class="logo">
+                 <a href="index.php"></a>
+                 <img src="images/logo.png" alt="" width="125px">
+             </div>
+             <nav>
+                 <ul id="MenuItems">
+                     <li><a href="index.php">Home</a></li>
+                     <li><a href="products.php">Products</a></li>
+                     <li><a href="">About us</a></li>
+                     <li><a href="">Contacts</a></li>
+                     <li><a href="account.php">Accounts</a></li>
+                 </ul>
+             </nav>
+             <a href="cart.php">
+                 <img src="images/cart.png" alt="" width="30px" height="25px">
+             </a>
+             <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
+         </div>
     </div>
 
     <div class="small-container single-product">
