@@ -12,6 +12,14 @@
 </head>
 
 <body>
+    <?php
+        include 'database.php';
+        $id = $_GET['pid'];
+        $sql = "SELECT * FROM product WHERE ProductID = $id";
+        $product = $dbh -> query($sql);
+        $p = $product -> fetch(PDO::FETCH_ASSOC);
+        $img = explode(',', $p['Picture']);
+    ?>
     <div class="container">
         <div class="navbar">
              <div class="logo">
@@ -38,28 +46,23 @@
     <div class="small-container single-product">
         <div class="row">
             <div class="col-2">
-                <img src="images/gall1.jpg" alt="" width="100%" id="ProductImg">
+                <img src="images/<?php echo $img[0] ?>" alt="" width="100%" id="ProductImg">
 
                 <div class="small-img-row">
-                    <div class="small-img-col">
-                        <img src="images/gall1.jpg" alt="" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="images/gall2.jpg" alt="" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="images/gall3.jpg" alt="" width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="images/gall4.jpg" alt="" width="100%" class="small-img">
-                    </div>
+                    <?php
+                        for($i = 0; $i < 4; $i++){
+                            echo '<div class="small-img-col">
+                                        <img src="images/'.$img[$i].'" alt="" width="100%" class="small-img">
+                                    </div>';
+                        }
+                    ?>
                 </div>
 
             </div>
             <div class="col-2">
                 <p>Home / Hoodie</p>
-                <h1>Lanvia Hoodie by Yame</h1>
-                <h4>Ym.4523</h4>
+                <h1><?php echo $p['ProductName'] ?></h1>
+                <h4><?php echo $p['Price'] ?></h4>
                 <select name="" id="">
                     <option value="">Select Size</option>
                     <option value="">XXL</option>
@@ -72,9 +75,7 @@
                 <a href="" class="btn">Add to Cart</a>
                 <h3>Products Detail <i class="fa fa-indent"></i></h3>
                 <br>
-                <p>The Kaval collection is the new uniform for the street. These purpose-driven pieces merge form and
-                    function. This pullover hoodie is made in the USA of heavyweight cotton French terry. The fabric
-                    feels smooth on the outside, with a soft brushed surface on the inside.</p>
+                <p><?php echo $p['Description']?></p>
             </div>
         </div>
     </div>
