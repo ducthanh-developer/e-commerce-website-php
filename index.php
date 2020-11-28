@@ -95,154 +95,85 @@
         </div>
         <h2 class="title">Lasted Products</h2>
         <div class="row">
-            <div class="col-4">
-                <img src="images/pro9.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro10.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro11.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro12.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
+            <?php
+                        include 'database.php';
+                        $sql = "SELECT * FROM product";
+                        $product = $dbh -> query($sql);
+                        for($i = 0; $i < 4; $i++){
+                            $p = $product -> fetch(PDO::FETCH_ASSOC);
+                            $img = explode(',', $p['Picture']);
+                            echo '<div class="col-4">
+                            <a href="product-detail.php?pid='.$p['ProductID'].'">
+                                <img src="images/'.$img[0].'" alt="">
+                            </a>
+                            <a href="product-detail.php">
+                                <h4>'.$p['ProductName'].'</h4>
+                            </a>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <p>'.$p['Price'].'</p>
+                        </div>';
+                        }
+                    ?>
         </div>
         <div class="row">
-            <div class="col-4">
-                <img src="images/pro13.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro14.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro15.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro16.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
+            <?php
+                    include 'database.php';
+                    $sql = "SELECT * FROM product LIMIT 4,8";
+                    $product = $dbh -> query($sql);
+                    for($i = 0; $i < 4; $i++){
+                        $p = $product -> fetch(PDO::FETCH_ASSOC);
+                        $img = explode(',', $p['Picture']);
+                        echo '<div class="col-4">
+                        <a href="product-detail.php?pid='.$p['ProductID'].'">
+                            <img src="images/'.$img[0].'" alt="">
+                        </a>
+                        <a href="product-detail.php">
+                            <h4>'.$p['ProductName'].'</h4>
+                        </a>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <p>'.$p['Price'].'</p>
+                    </div>';
+                    }
+                ?>
         </div>
         <div class="row">
-            <div class="col-4">
-                <img src="images/pro5.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro6.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro7.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
-            <div class="col-4">
-                <img src="images/pro8.jpg" alt="">
-                <h4>Hoodie SweatShirt by Yame</h4>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                    <i class="fa fa-star-o"></i>
-                </div>
-                <p>Ym.3421</p>
-            </div>
+            <?php
+                    include 'database.php';
+                    $sql = "SELECT * FROM product LIMIT 8,12";
+                    $product = $dbh -> query($sql);
+                    for($i = 0; $i < 4; $i++){
+                        $p = $product -> fetch(PDO::FETCH_ASSOC);
+                        $img = explode(',', $p['Picture']);
+                        echo '<div class="col-4">
+                        <a href="product-detail.php?pid='.$p['ProductID'].'">
+                            <img src="images/'.$img[0].'" alt="">
+                        </a>
+                        <a href="product-detail.php">
+                            <h4>'.$p['ProductName'].'</h4>
+                        </a>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <p>'.$p['Price'].'</p>
+                    </div>';
+                    }
+                ?>
         </div>
     </div>
 
