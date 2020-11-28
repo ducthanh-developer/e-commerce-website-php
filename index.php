@@ -96,7 +96,6 @@
         <h2 class="title">Lasted Products</h2>
         <div class="row">
             <?php
-                        include 'database.php';
                         $sql = "SELECT * FROM product";
                         $product = $dbh -> query($sql);
                         for($i = 0; $i < 4; $i++){
@@ -123,7 +122,6 @@
         </div>
         <div class="row">
             <?php
-                    include 'database.php';
                     $sql = "SELECT * FROM product LIMIT 4,8";
                     $product = $dbh -> query($sql);
                     for($i = 0; $i < 4; $i++){
@@ -150,7 +148,6 @@
         </div>
         <div class="row">
             <?php
-                    include 'database.php';
                     $sql = "SELECT * FROM product LIMIT 8,12";
                     $product = $dbh -> query($sql);
                     for($i = 0; $i < 4; $i++){
