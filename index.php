@@ -23,7 +23,52 @@
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="products.php">Products</a></li>
+                        <li class="dropdown">
+                            <a href="#">Products</a>
+                            <ul class="menu-area">
+                                <ul>
+                                    <h4><a href="products.php?cid=ao">ÁO NAM</a></h4>
+                                    <?php
+                                        include 'database.php';
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'áo%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>
+                                    <h4><a href="products.php?cid=quan">QUẦN NAM</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'quần%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>
+                                    <h4><a href="products.php?cid=phukien">PHỤ KIỆN</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'phụ%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>    
+                                    <h4><a href="products.php?cid=giay">GIÀY NAM</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'giày%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </ul>
+                        </li>
                         <li><a href="">About us</a></li>
                         <li><a href="">Contacts</a></li>
                         <li><a href="account.php">Accounts</a></li>
@@ -33,6 +78,12 @@
                     <img src="images/cart.png" alt="" width="30px" height="25px">
                 </a>
                 <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
+            </div>
+            <div class="search">
+                <form action="products.php" method="post">
+                    <input type="text" name="proName">
+                    <button class="btn" type="submit" name="submit">Tìm kiếm</button>
+                </form>
             </div>
             <div class="row">
                 <div class="col-2">
@@ -66,13 +117,11 @@
 
     <div class="small-container">
         <h2 class="title">Featured Products</h2>
-        <div class="row">
+        <div class="row row-pro">
             <?php
-                    include 'database.php';
-                    $sql = "SELECT * FROM product";
+                    $sql = "SELECT * FROM product ORDER BY View DESC LIMIT 4";
                     $product = $dbh -> query($sql);
-                    for($i = 0; $i < 4; $i++){
-                        $p = $product -> fetch(PDO::FETCH_ASSOC);
+                    foreach($product as $p){
                         $img = explode(',', $p['Picture']);
                         echo '<div class="col-4">
                         <a href="product-detail.php?pid='.$p['ProductID'].'">
@@ -94,12 +143,11 @@
                 ?>
         </div>
         <h2 class="title">Lasted Products</h2>
-        <div class="row">
+        <div class="row row-pro">
             <?php
-                        $sql = "SELECT * FROM product";
+                        $sql = "SELECT * FROM product ORDER BY UpdateDate DESC LIMIT 12";
                         $product = $dbh -> query($sql);
-                        for($i = 0; $i < 4; $i++){
-                            $p = $product -> fetch(PDO::FETCH_ASSOC);
+                        foreach($product as $p){
                             $img = explode(',', $p['Picture']);
                             echo '<div class="col-4">
                             <a href="product-detail.php?pid='.$p['ProductID'].'">
@@ -119,58 +167,6 @@
                         </div>';
                         }
                     ?>
-        </div>
-        <div class="row">
-            <?php
-                    $sql = "SELECT * FROM product LIMIT 4,8";
-                    $product = $dbh -> query($sql);
-                    for($i = 0; $i < 4; $i++){
-                        $p = $product -> fetch(PDO::FETCH_ASSOC);
-                        $img = explode(',', $p['Picture']);
-                        echo '<div class="col-4">
-                        <a href="product-detail.php?pid='.$p['ProductID'].'">
-                            <img src="images/'.$img[0].'" alt="">
-                        </a>
-                        <a href="product-detail.php">
-                            <h4>'.$p['ProductName'].'</h4>
-                        </a>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p>'.$p['Price'].'</p>
-                    </div>';
-                    }
-                ?>
-        </div>
-        <div class="row">
-            <?php
-                    $sql = "SELECT * FROM product LIMIT 8,12";
-                    $product = $dbh -> query($sql);
-                    for($i = 0; $i < 4; $i++){
-                        $p = $product -> fetch(PDO::FETCH_ASSOC);
-                        $img = explode(',', $p['Picture']);
-                        echo '<div class="col-4">
-                        <a href="product-detail.php?pid='.$p['ProductID'].'">
-                            <img src="images/'.$img[0].'" alt="">
-                        </a>
-                        <a href="product-detail.php">
-                            <h4>'.$p['ProductName'].'</h4>
-                        </a>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <p>'.$p['Price'].'</p>
-                    </div>';
-                    }
-                ?>
         </div>
     </div>
 

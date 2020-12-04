@@ -14,25 +14,70 @@
 <body>
     <div class="container">
     <div class="navbar">
-        <div class="logo">
-            <a href="index.php">
-                <img src="images/logo.png" alt="" width="125px">
-            </a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="">About us</a></li>
-                <li><a href="">Contacts</a></li>
-                <li><a href="account.php">Accounts</a></li>
-            </ul>
-        </nav>
-        <a href="cart.php">
-            <img src="images/cart.png" alt="" width="30px" height="25px">
-        </a>
-        <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
-    </div>
+                <div class="logo">
+                    <a href="index.php">
+                        <img src="images/logo.png" alt="" width="125px">
+                    </a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.php">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Products</a>
+                            <ul class="menu-area">
+                                <ul>
+                                    <h4><a href="products.php?cid=ao">ÁO NAM</a></h4>
+                                    <?php
+                                        include 'database.php';
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'áo%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>
+                                    <h4><a href="products.php?cid=quan">QUẦN NAM</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'quần%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>
+                                    <h4><a href="products.php?cid=phukien">PHỤ KIỆN</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'phụ%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>    
+                                    <h4><a href="products.php?cid=giay">GIÀY NAM</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'giày%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="account.php">Accounts</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.php">
+                    <img src="images/cart.png" alt="" width="30px" height="25px">
+                </a>
+                <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
+            </div>
     </div>
 
     <div class="account-page">

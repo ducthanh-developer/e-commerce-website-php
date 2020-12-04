@@ -22,21 +22,68 @@ body {
 }
 
 nav{
+    position: relative;
     flex: 1;
     text-align: right;
 }
 
-nav ul{
+nav>ul{
     display: inline-block;
     list-style: none;
 }
 
-nav ul li{
+nav>ul>li{
     display: inline-block;
     margin-right: 20px;
 }
 
+nav>ul>li>a{
+    padding: 10px;
+    transition: all 0.8s;
+}
+
+nav>ul>li>a:hover{
+    background-color: #0d5f6b;
+    color: var(--white-color);
+}
+
+.dropdown:hover .menu-area{
+    visibility: visible;
+}
+
+.menu-area{
+    position: absolute;
+    background-color: var(--white-color);
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+}
+
+.menu-area h4{
+    margin-bottom: 10px;
+}
+
+.menu-area a{
+    padding: 3px;
+}
+
+.menu-area a:hover{
+    font-weight: bolder;
+}
+
+.menu-area{
+    visibility: hidden;
+}
+
+
+
 a{
+    display: block;
     text-decoration: none;
     color: var(--text-color);
 }
@@ -63,6 +110,10 @@ p{
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.row.row-pro{
+    justify-content: flex-start;
 }
 
 .col-2{
@@ -100,6 +151,22 @@ p{
 
 .header .row{
     margin-top: 70px;
+}
+
+.search form{
+    float: right;
+    width: 48%;
+    display: flex;
+}
+
+.search form button{
+    margin-left: 10px;
+    width: 140px;
+}
+
+.search form input{
+    padding: 0 10px;
+    border: 1px solid #cccccc;
 }
 
 .categories{
@@ -411,7 +478,7 @@ select:focus{
 
 .small-img-row{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .small-img-col{
@@ -502,6 +569,7 @@ th:last-child{
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
     border-radius: 9px;
     overflow: hidden;
+    z-index: 1;
 }
 
 .form-container span{

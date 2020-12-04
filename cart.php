@@ -13,26 +13,71 @@
 
 <body>
     <div class="container">
-        <div class="navbar">
-            <div class="logo">
-                <a href="index.php">
-                    <img src="images/logo.png" alt="" width="125px">
+    <div class="navbar">
+                <div class="logo">
+                    <a href="index.php">
+                        <img src="images/logo.png" alt="" width="125px">
+                    </a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.php">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Products</a>
+                            <ul class="menu-area">
+                                <ul>
+                                    <h4><a href="products.php?cid=ao">ÁO NAM</a></h4>
+                                    <?php
+                                        include 'database.php';
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'áo%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>
+                                    <h4><a href="products.php?cid=quan">QUẦN NAM</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'quần%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>
+                                    <h4><a href="products.php?cid=phukien">PHỤ KIỆN</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'phụ%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                                <ul>    
+                                    <h4><a href="products.php?cid=giay">GIÀY NAM</a></h4>
+                                    <?php
+                                        $sql = "SELECT * FROM category WHERE Description LIKE 'giày%'";
+                                        $category = $dbh -> query($sql);
+                                        foreach($category as $cate){
+                                            echo '<li><a href="products.php?cid='.$cate['CateID'].'">'.$cate['CategoryName'].'</a></li>';
+                                        }
+                                    ?>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="account.php">Accounts</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.php">
+                    <img src="images/cart.png" alt="" width="30px" height="25px">
                 </a>
+                <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
             </div>
-            <nav>
-                <ul id="MenuItems">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="">About us</a></li>
-                    <li><a href="">Contacts</a></li>
-                    <li><a href="account.php">Accounts</a></li>
-                </ul>
-            </nav>
-            <a href="cart.php">
-                <img src="images/cart.png" alt="" width="30px" height="25px">
-            </a>
-            <img src="images/menu.png" alt="" class="menu-icon" onclick="menutoggle()">
-        </div>
     </div>
 
     <div class="small-container cart-page">
@@ -42,96 +87,48 @@
                 <th>Quantity</th>
                 <th>Sub Total</th>
             </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="images/buy-1.jpg" alt="">
-                        <div>
-                            <p>Hoodie Simple by Yame</p>
-                            <small>$345</small>
-                            <br>
-                            <a href="">Remove</a>
+            <?php
+                $allTotal = 0;
+                $vat = 0;
+                $pay = 0;
+                $sql = "SELECT * FROM orderdetail as o INNER JOIN product as p ON o.ProductID = p.ProductID";
+                $order = $dbh -> query($sql);
+                foreach($order as $o){
+                    $img = explode(',', $o['Picture']);
+                    $total = $o['Price']*$o['Quantity'];
+                    $allTotal += $total;
+                    echo '<tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="images/'.$img[0].'" alt="">
+                            <div>
+                                <p>'.$o['ProductName'].'</p>
+                                <small>'.$o['Price'].'</small>
+                                <br>
+                                <a href="">Remove</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$345</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="images/buy-2.jpg" alt="">
-                        <div>
-                            <p>Hoodie Simple by Yame</p>
-                            <small>$345</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$566</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="images/buy-2.jpg" alt="">
-                        <div>
-                            <p>Hoodie Simple by Yame</p>
-                            <small>$345</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$565</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="images/buy-2.jpg" alt="">
-                        <div>
-                            <p>Hoodie Simple by Yame</p>
-                            <small>$345</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$558</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="images/buy-2.jpg" alt="">
-                        <div>
-                            <p>Hoodie Simple by Yame</p>
-                            <small>$345</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$678</td>
-            </tr>
+                    </td>
+                    <td><input type="number" value="'.$o['Quantity'].'" disabled></td>
+                    <td>'.$total.'</td>
+                </tr>';
+                }
+            ?>
         </table>
 
         <div class="total-price">
             <table>
                 <tr>
                     <td>Sub Total</td>
-                    <td>$5657</td>
+                    <td><?php echo $allTotal; ?></td>
                 </tr>
                 <tr>
-                    <td>Pee</td>
-                    <td>$342</td>
+                    <td>VAT</td>
+                    <td><?php $vat = $allTotal * 0.1; echo $vat; ?></td>
                 </tr>
                 <tr>
                     <td>Grand Total</td>
-                    <td>$5903</td>
+                    <td><?php $pay = $allTotal + $vat; echo $pay; ?></td>
                 </tr>
             </table>
         </div>
